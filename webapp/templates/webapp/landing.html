@@ -1,0 +1,29 @@
+{% extends 'webapp/base.html' %}
+
+{% block title %}
+<title>Top</title>
+{% endblock title %}
+
+{% block body %}
+<h1>Search</h1>
+<form action="{% url 'webapp:landing' %}" method="POST">
+  <input type="search" name="term" id="term">
+  <input type="submit" value="submit">
+  {% csrf_token %}
+</form>
+
+<h1><a href="{% url 'webapp:questionnaire' %}">Questionnaire</a></h1>
+
+<h1>City List</h1>
+<ul>
+  {% for city in cities %}
+  <li><a href="{% url 'webapp:city' city %}">{{ city }}</a></li>
+  {% empty %}
+  <li>No cities.</li>
+  {% endfor %}
+</ul>
+
+{% if True %}
+{% else %}
+{% endif %}
+{% endblock body %}

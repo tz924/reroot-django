@@ -1,0 +1,14 @@
+{% extends 'webapp/base.html' %}
+
+{% block title %}
+<title>{{ city }}</title>
+{% endblock title %}
+
+{% block body %}
+<h1>
+  <a href="https://en.wikipedia.org/wiki/{{ city }}">
+    {{ city|capfirst }}
+  </a>
+</h1>
+<a href="{% url 'webapp:landing' %}">Landing Page</a>
+{% endblock body %}
