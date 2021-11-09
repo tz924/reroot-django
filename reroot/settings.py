@@ -34,6 +34,9 @@ ALLOWED_HOSTS = []
 INSTALLED_APPS = [
     'webapp',
 
+    # tools
+    'compressor',
+
     # default
     'django.contrib.admin',
     'django.contrib.auth',
@@ -131,3 +134,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Our code:
 # Activate Django-Heroku.
 django_heroku.settings(locals())
+
+STATICFILES_FINDERS = [
+    'compressor.finders.CompressorFinder'
+]
+
+COMPRESS_PRECOMPILERS = (
+    ('text/x-scss', 'django_libsass.SassCompiler'),
+)
