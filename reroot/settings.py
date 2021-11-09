@@ -35,7 +35,7 @@ INSTALLED_APPS = [
     'webapp',
 
     # tools
-    'compressor',
+    'sass_processor',
 
     # default
     'django.contrib.admin',
@@ -135,10 +135,11 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 # Activate Django-Heroku.
 django_heroku.settings(locals())
 
+# SASS
 STATICFILES_FINDERS = [
-    'compressor.finders.CompressorFinder'
+    'django.contrib.staticfiles.finders.FileSystemFinder',
+    'django.contrib.staticfiles.finders.AppDirectoriesFinder',
+    'sass_processor.finders.CssFinder',
 ]
 
-COMPRESS_PRECOMPILERS = (
-    ('text/x-scss', 'django_libsass.SassCompiler'),
-)
+SASS_PRECISION = 8

@@ -1,5 +1,6 @@
 django
-django_compressor
-django-libsass
+libsass
+django-compressor
+django-sass-processor
 gunicorn
 django-heroku
