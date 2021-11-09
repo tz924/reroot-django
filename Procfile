@@ -1,1 +1,1 @@
-web: gunicorn top.wsgi
+web: gunicorn reroot.wsgi
