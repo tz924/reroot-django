@@ -1,0 +1,74 @@
+// landing.scss
+
+// Color definitions
+$primary-h:#FF5C58;
+$primary-m:#FFA19E;
+$primary-l:#FCD2D1;
+$secondary-h:#FFDCAB;
+$secondary-m:#FFEDD3;
+$secondary-l:#FFF7EC;
+$tertiary-h:#000000;
+$tertiary-m:#C4C4C4;
+$tertiary-l:#D8D8D8;
+$title:#898383;
+
+// Option A: Include all of Bootstrap
+@import "../bootstrap/bootstrap";
+// Include any default variable overrides here (though functions won't be available)
+
+// button-variant(bg, border, color, 
+//                hover-bg, hover-border, hover-color, 
+//                active-bg, active-border, active-color)
+
+.btn-primary {
+  @extend .rounded-pill;
+  @include button-variant($primary-h, $primary-h, $white,
+    $primary-m, $primary-m, $white,
+    $primary-h, $primary-h, $white);
+  font-family: roboto, arial, helvetica;
+}
+
+.btn-unchecked {
+  @extend .rounded-pill;
+  @include button-variant($tertiary-h, $black, $title,
+    $tertiary-h, $black, $title,
+    $tertiary-h, $black, $title);
+}
+
+.btn-checked {
+  @extend .rounded-pill;
+  @include button-variant($primary-m, $primary-m, $white,
+    $primary-l, primary-l, $white,
+    $primary-m, $primary-m, $white);
+}
+
+// Fonts
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&family=Open+Sans&family=Roboto&display=swap');
+
+
+h1 {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  font-size: 90px;
+  text-align: center;
+}
+
+.question-title {
+  font-family: 'Open Sans', sans-serif;
+  font-size: 64px;
+  color: $title;
+}
+
+.question-subtitle {
+  font-size: 20px;
+  color: $black;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: bold;
+}
+
+a,
+a:hover,
+a:focus,
+a:active {
+  text-decoration: none;
+  color: inherit;
+}

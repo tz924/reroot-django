@@ -25,6 +25,24 @@ def questionnaire(request):
     })
 
 
+def question(request):
+    return render(request, "webapp/question.html", {
+        "form": forms.NewQuestionnaireForm()
+    })
+
+
+def choices(request):
+    return render(request, "webapp/choices.html", {
+        "form": forms.NewQuestionnaireForm()
+    })
+
+
+def done(request):
+    return render(request, "webapp/done.html", {
+        "form": forms.NewQuestionnaireForm()
+    })
+
+
 def results(request):
     cities = City.objects.all()
     mapbox_access_token = 'pk.eyJ1IjoiemhqMDkyNCIsImEiOiJja3ZnangxdXljMXBlMnBtYTF0c29oN2N3In0.HsgAF-xISYEHuqdLlpJL2A'

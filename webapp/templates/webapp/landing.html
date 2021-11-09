@@ -12,15 +12,16 @@
 
 {% block body %}
 
-<div class="row justify-content-start px-5">
-  <div class="col-4">
+<div class="row justify-content-start px-5" id="title-container">
+  <div class="col-4 text">
     <h2>AaBbCcDdEeFf</h2>
     <h3>AaBbCcDdEeFf</h3>
   </div>
-  <div class="col-8">
+  <div class="col-8 image">
     <img src="{% static 'webapp/images/carrosel.svg' %}" alt="">
   </div>
-  <p><a href="{% url 'webapp:questionnaire' %}">Questionnaire</a></p>
+  <button type="button" class="btn btn-primary" id="questionnaire-button"><a
+      href="{% url 'webapp:questionnaire' %}">Questionnaire</a></button>
 </div>
 
 <div class="row justify-content-start px-5">
@@ -51,12 +52,18 @@
   </div>
 </div>
 
-<div class="row justify-content-center">
-  <!-- <form action="{% url 'webapp:landing' %}" method="POST">
-    <input type="search" name="term">
-    <input type="submit" value="search">
+<div class="row">
+  <form class="text-center" action="{% url 'webapp:landing' %}" method="POST">
+    <div class="search-group">
+      <span>
+        <input type="search" class="search-box" name="term" placeholder="What do you care about?" autocomplete="">
+      </span>
+      <span>
+        <input type="submit" class="search-button btn btn-primary" value="search">
+      </span>
+    </div>
     {% csrf_token %}
-  </form> -->
+  </form>
 </div>
 
 <div class="row justify-content-start px-5">
