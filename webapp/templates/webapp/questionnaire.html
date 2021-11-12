@@ -1,14 +1,6 @@
-{% extends 'webapp/base.html' %}
+{% extends 'webapp/base_questionnaire.html' %}
 {% load sass_tags %}
 {% load static %}
-
-{% block title %}
-<title>Questionnaire</title>
-{% endblock title %}
-
-{% block style %}
-<link rel="stylesheet" href="{% sass_src 'webapp/scss/questionnaire.scss' %}" type="text/css">
-{% endblock style %}
 
 {% block body %}
 <!-- Background image -->
@@ -16,13 +8,15 @@
   <img src="{% static 'webapp/images/questionnaire.png' %}" alt="">
   <div class="container d-flex align-items-center justify-content-center text-center h-100">
     <div class="text row">REroot:<br>finding home</div>
-    <form class="row" action="{% url 'webapp:question' %}" method="post">
+
+    <form class="row" action="{% url 'webapp:importance' %}" method="post">
 
       <!-- Update Submission -->
 
       {% csrf_token %}
       <input class="btn btn-primary" type="submit" value="Start Questionnaire">
     </form>
+
   </div>
 </div>
 <!-- Background image -->

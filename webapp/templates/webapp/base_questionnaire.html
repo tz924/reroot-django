@@ -1,0 +1,18 @@
+{% extends 'webapp/base.html' %}
+{% load sass_tags %}
+{% load static %}
+
+{% block title %}
+<title>Questionnaire</title>
+{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% sass_src 'webapp/scss/questionnaire.scss' %}" type="text/css">
+{% endblock style %}
+
+{% block body %}
+
+{% block progress %}
+{% endblock progress %}
+
+{% endblock body %}

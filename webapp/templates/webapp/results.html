@@ -1,11 +1,10 @@
-{% extends 'webapp/base.html' %}
+{% extends 'webapp/base_nav.html' %}
 
 {% block title %}
 <title>Results</title>
 {% endblock title %}
 
 {% block body %}
-
 <h1>Results</h1>
 
 <div id='map' style='width: 80%; height: 300px;'></div>
@@ -66,5 +65,4 @@
       {% csrf_token %}
     </form>
   </div>
-
   {% endblock body %}

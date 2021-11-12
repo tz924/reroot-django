@@ -2,5 +2,6 @@ django
 libsass
 django-compressor
 django-sass-processor
+django-crispy-forms
 gunicorn
 django-heroku

@@ -1,4 +1,4 @@
-// landing.scss
+// questionnaire.scss
 // Option A: Include all of Bootstrap
 
 // Include any default variable overrides here (though functions won't be available)
@@ -41,4 +41,12 @@
   min-width: 200px;
   min-height: 40px;
   font-size: 24px;
+}
+
+.option-group {
+  height: fit-content;
+}
+
+.progress {
+  height: 5vh;
 }

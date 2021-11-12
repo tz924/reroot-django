@@ -1,0 +1,44 @@
+// questionnaire.scss
+// Option A: Include all of Bootstrap
+
+// Include any default variable overrides here (though functions won't be available)
+
+// Then add additional custom code here
+#intro {
+  height: 100%;
+
+  img {
+    width: 100%;
+    height: auto;
+  }
+
+  .text {
+    position: absolute;
+    left: 30%;
+    top: 15%;
+    font-size: 96px;
+    color: white;
+  }
+
+  .btn {
+    width: fit-content;
+    position: absolute;
+    left: 50%;
+    bottom: 50%;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+  }
+}
+
+/* Height for devices larger than 576px */
+@media (min-width: 992px) {
+  #intro {
+    margin-top: -58.59px;
+  }
+}
+
+.btn-questionnaire {
+  min-width: 200px;
+  min-height: 40px;
+  font-size: 24px;
+}

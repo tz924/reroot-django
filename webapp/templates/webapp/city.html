@@ -1,4 +1,4 @@
-{% extends 'webapp/base.html' %}
+{% extends 'webapp/base_nav.html' %}
 
 {% block title %}
 <title>{{ city }}</title>
@@ -10,5 +10,15 @@
     {{ city|capfirst }}
   </a>
 </h1>
-<a href="{% url 'webapp:landing' %}">Landing Page</a>
+
+<div id='map' style='width: 80%; height: 300px;'></div>
+<script>
+  mapboxgl.accessToken = '{{ mapbox_access_token }}';
+  var map = new mapboxgl.Map({
+    container: 'map',
+    style: 'mapbox://styles/mapbox/streets-v11',
+    center: [-103.771556, 44.967243],
+    zoom: 3,
+  });
+</script>
 {% endblock body %}

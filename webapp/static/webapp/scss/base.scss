@@ -1,4 +1,4 @@
-// landing.scss
+// base.scss
 
 // Color definitions
 $primary-h:#FF5C58;
@@ -16,6 +16,7 @@ $title:#898383;
 @import "../bootstrap/bootstrap";
 // Include any default variable overrides here (though functions won't be available)
 
+// Buttons
 // button-variant(bg, border, color, 
 //                hover-bg, hover-border, hover-color, 
 //                active-bg, active-border, active-color)
@@ -28,17 +29,16 @@ $title:#898383;
   font-family: roboto, arial, helvetica;
 }
 
-.btn-unchecked {
+//   button-outline-variant(
+//   $color,
+//   $color-hover: color-contrast($color),
+//   $active-background: $color,
+//   $active-border: $color,
+//   $active-color: color-contrast($active-background))
+.btn-toggle {
   @extend .rounded-pill;
-  @include button-variant($tertiary-h, $black, $title,
-    $tertiary-h, $black, $title,
-    $tertiary-h, $black, $title);
-}
-
-.btn-checked {
-  @extend .rounded-pill;
-  @include button-variant($primary-m, $primary-m, $white,
-    $primary-l, primary-l, $white,
+  @include button-variant($tertiary-l, $tertiary-h, $title,
+    $tertiary-m, $tertiary-h, $title,
     $primary-m, $primary-m, $white);
 }
 

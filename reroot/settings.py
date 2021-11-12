@@ -36,6 +36,7 @@ INSTALLED_APPS = [
 
     # tools
     'sass_processor',
+    'crispy_forms',
 
     # default
     'django.contrib.admin',
