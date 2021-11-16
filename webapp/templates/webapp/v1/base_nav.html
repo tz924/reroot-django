@@ -1,26 +1,17 @@
 {% extends 'webapp/base.html' %}
-{% load sass_tags %}
-{% load static %}
 
 {% block title %}
-<title>Questionnaire</title>
 {% endblock title %}
 
 {% block style %}
-<link rel="stylesheet" href="{% sass_src 'webapp/scss/questionnaire.scss' %}" type="text/css">
 {% endblock style %}
 
-{% block body %}
-<div class="progress">
-  {% block progress %}
-  {% endblock progress %}
-</div>
-
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFF7EC; height: 5vh;">
+{% block top_nav %}
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #C4C4C4;">
 
   <div class="container-lg">
     <a class="navbar-brand nav-link active" aria-current="page" href="{% url 'webapp:landing' %}">
-      <img src="{% static 'webapp/images/logo.png' %}" alt="reroot logo">
+      ReRoot
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -29,16 +20,15 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-
+      <form class="d-flex">
+        <input class="form-control me-2" type="search" placeholder="City" aria-label="Search">
+        <button class="btn btn-outline-dark" type="submit">Explore</button>
+      </form>
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link">ABOUT</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">RANDOM</a>
+          <a class="nav-link">Compare</a>
         </li>
       </ul>
-
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
           {% if user.is_authenticated %}
@@ -52,11 +42,16 @@
           {% endif %}
         </li>
       </ul>
-
     </div>
   </div>
 </nav>
-{% block question %}
-{% endblock question %}
+{% endblock top_nav %}
 
+{% block body %}
 {% endblock body %}
+
+{% block bottom_nav %}
+<nav class="navbar navbar-expand-lg navbar-light justify-content-center" style="background-color: #C4C4C4;">
+  Copyright © Company Name. All rights reserved.
+</nav>
+{% endblock bottom_nav %}

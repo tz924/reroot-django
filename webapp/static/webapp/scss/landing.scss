@@ -2,6 +2,7 @@
 // Option A: Include all of Bootstrap
 
 // Include any default variable overrides here (though functions won't be available)
+@import '../scss/variables';
 
 // Then add additional custom code here
 .card-block {
@@ -14,64 +15,42 @@
   border-radius: 24px;
 }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.scrolling-wrapper::-webkit-scrollbar {
-  display: none;
-}
+#landing-container {
+  height: 90vh;
 
-.scrolling-wrapper {
-  overflow-x: auto;
+  .left {
+    .text {
+      font-family: 'Playfair Display', serif;
+      color: $theme-dark;
+      margin-top: 35vh;
 
-  /* Hide scrollbar for IE, Edge and Firefox */
+      h2 {
+        font-size: 64px;
+      }
 
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */
-}
-
-
-#title-container {
-  position: relative;
-
-  .text {
-    padding-top: 15%;
+      p {
+        font-size: 24px;
+      }
+    }
   }
 
-  .btn {
-    min-width: 10vw;
-    width: 100px;
-    height: 5em;
+  .right {
+    background: $theme-dark;
 
+    button {
+      margin-top: 45vh;
+    }
+  }
+
+  img {
     position: absolute;
-    bottom: 10%;
+    max-width: 300px;
+    width: 20%;
+    height: auto;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
   }
-}
 
-
-.search-group {
-  min-width: 150px;
-  width: 15vw;
-  height: 50px;
-  display: inline-block;
-
-  .search-button {
-    float: right;
-    height: 100%;
-    min-width: 150px;
-    margin-right: 0;
-    width: 4vw;
-  }
-
-  .search-box {
-    float: left;
-    height: 100%;
-    border-radius: 5px;
-    border-color: #ccc;
-    margin-left: 0;
-    width: 9vw;
-  }
 }

@@ -4,7 +4,7 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&family=Open+Sans&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&family=Open+Sans&family=Playfair+Display:wght@400;700&family=Roboto&display=swap");
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -7815,5 +7815,13 @@ a:focus,
 a:active {
   text-decoration: none;
   color: inherit; }
+
+body .container-lg {
+  background-color: #FFF7EC; }
+
+.navbar-brand {
+  display: flex; }
+  .navbar-brand img {
+    max-height: 4vh; }
 
 /*# sourceMappingURL=base.css.map */

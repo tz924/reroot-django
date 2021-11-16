@@ -7,49 +7,28 @@
   transition: all 0.2s ease-in-out !important;
   border-radius: 24px; }
 
-/* Hide scrollbar for Chrome, Safari and Opera */
-.scrolling-wrapper::-webkit-scrollbar {
-  display: none; }
-
-.scrolling-wrapper {
-  overflow-x: auto;
-  /* Hide scrollbar for IE, Edge and Firefox */
-  -ms-overflow-style: none;
-  /* IE and Edge */
-  scrollbar-width: none;
-  /* Firefox */ }
-
-#title-container {
-  position: relative; }
-  #title-container .text {
-    padding-top: 15%; }
-  #title-container .btn {
-    min-width: 10vw;
-    width: 100px;
-    height: 5em;
+#landing-container {
+  height: 90vh; }
+  #landing-container .left .text {
+    font-family: 'Playfair Display', serif;
+    color: #DEC197;
+    margin-top: 35vh; }
+    #landing-container .left .text h2 {
+      font-size: 64px; }
+    #landing-container .left .text p {
+      font-size: 24px; }
+  #landing-container .right {
+    background: #DEC197; }
+    #landing-container .right button {
+      margin-top: 45vh; }
+  #landing-container img {
     position: absolute;
-    bottom: 10%;
+    max-width: 300px;
+    width: 20%;
+    height: auto;
+    top: 50%;
     left: 50%;
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%); }
-
-.search-group {
-  min-width: 150px;
-  width: 15vw;
-  height: 50px;
-  display: inline-block; }
-  .search-group .search-button {
-    float: right;
-    height: 100%;
-    min-width: 150px;
-    margin-right: 0;
-    width: 4vw; }
-  .search-group .search-box {
-    float: left;
-    height: 100%;
-    border-radius: 5px;
-    border-color: #ccc;
-    margin-left: 0;
-    width: 9vw; }
 
 /*# sourceMappingURL=landing.css.map */

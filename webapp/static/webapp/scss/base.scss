@@ -1,16 +1,6 @@
 // base.scss
 
-// Color definitions
-$primary-h:#FF5C58;
-$primary-m:#FFA19E;
-$primary-l:#FCD2D1;
-$secondary-h:#FFDCAB;
-$secondary-m:#FFEDD3;
-$secondary-l:#FFF7EC;
-$tertiary-h:#000000;
-$tertiary-m:#C4C4C4;
-$tertiary-l:#D8D8D8;
-$title:#898383;
+@import '../scss/variables';
 
 // Option A: Include all of Bootstrap
 @import "../bootstrap/bootstrap";
@@ -43,7 +33,7 @@ $title:#898383;
 }
 
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&family=Open+Sans&family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&family=Open+Sans&family=Playfair+Display:wght@400;700&family=Roboto&display=swap');
 
 
 h1 {
@@ -71,4 +61,16 @@ a:focus,
 a:active {
   text-decoration: none;
   color: inherit;
+}
+
+body .container-lg {
+  background-color: $secondary-l;
+}
+
+.navbar-brand {
+  display: flex;
+
+  img {
+    max-height: 4vh;
+  }
 }

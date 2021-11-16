@@ -67,26 +67,22 @@ def city(request, city):
 
 
 def questionnaire(request):
-    return render(request, "webapp/questionnaire.html", {
-        "form": forms.NewQuestionnaireForm()
-    })
-
-
-def question(request):
-    return render(request, "webapp/question.html", {
-        "form": forms.NewQuestionnaireForm()
-    })
-
-
-def importance(request):
     factors = {
         "row1": ["disability", "diversity", "affordability"],
         "row2": ["public transit", "education", "clean water"],
         "row3": ["wages", "language", "lgbt", "defund police"],
         "row4": ["childcare", "voting", "medical"]
     }
-    return render(request, "webapp/importance.html", {
-        "factors": factors
+    return render(request, "webapp/questionnaire.html", {
+        "factors": factors,
+        "form": forms.NewQuestionnaireForm()
+
+    })
+
+
+def question(request):
+    return render(request, "webapp/question.html", {
+        "form": forms.NewQuestionnaireForm()
     })
 
 

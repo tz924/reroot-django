@@ -19,20 +19,23 @@
   {% block title %}
   {% endblock title %}
 
-  <link type="text/css" href="{% sass_src 'webapp/scss/base.scss' %}?rand=1" rel="stylesheet">
+  <link type="text/css" href="{% sass_src 'webapp/scss/base.scss' %}" rel="stylesheet">
 
   {% block style %}
   {% endblock style %}
 </head>
 
+
 {% block top_nav %}
 {% endblock top_nav %}
 
-
 <body>
+
   <div class="container-lg">
+
     {% block body %}
     {% endblock body %}
+
   </div>
 
   <!-- Option 1: Bootstrap Bundle with Popper -->

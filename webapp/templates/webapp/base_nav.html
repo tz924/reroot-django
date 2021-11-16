@@ -1,4 +1,6 @@
 {% extends 'webapp/base.html' %}
+{% load static %}
+{% load sass_tags %}
 
 {% block title %}
 {% endblock title %}
@@ -7,11 +9,11 @@
 {% endblock style %}
 
 {% block top_nav %}
-<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #C4C4C4;">
+<nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFF7EC; height: 5vh;">
 
   <div class="container-lg">
     <a class="navbar-brand nav-link active" aria-current="page" href="{% url 'webapp:landing' %}">
-      ReRoot
+      <img src="{% static 'webapp/images/logo.png' %}" alt="reroot logo">
     </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -20,15 +22,16 @@
     </button>
 
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
-      <form class="d-flex">
-        <input class="form-control me-2" type="search" placeholder="City" aria-label="Search">
-        <button class="btn btn-outline-dark" type="submit">Explore</button>
-      </form>
+
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
         <li class="nav-item">
-          <a class="nav-link">Compare</a>
+          <a class="nav-link">ABOUT</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link">RANDOM</a>
         </li>
       </ul>
+
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
           {% if user.is_authenticated %}
@@ -42,6 +45,7 @@
           {% endif %}
         </li>
       </ul>
+
     </div>
   </div>
 </nav>
@@ -51,7 +55,8 @@
 {% endblock body %}
 
 {% block bottom_nav %}
-<nav class="navbar navbar-expand-lg navbar-light justify-content-center" style="background-color: #C4C4C4;">
-  Copyright © Company Name. All rights reserved.
+<nav class="navbar navbar-expand-lg navbar-light justify-content-center"
+  style="background-color: #FFF7EC; height: 5vh;">
+  Copyright © ReRoot. All rights reserved.
 </nav>
 {% endblock bottom_nav %}

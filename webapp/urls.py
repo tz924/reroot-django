@@ -10,7 +10,6 @@ urlpatterns = [
     path('log-out', views.log_out, name='log_out'),
     path('register', views.register, name='register'),
     path('questionnaire', views.questionnaire, name='questionnaire'),
-    path('questionnaire/importance', views.importance, name='importance'),
     path('questionnaire/question', views.question, name='question'),
     path('questionnaire/choices', views.choices, name='choices'),
     path('questionnaire/done', views.done, name='done'),

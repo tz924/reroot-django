@@ -1,0 +1,85 @@
+{% extends 'webapp/base_nav.html' %}
+{% load static %}
+{% load sass_tags %}
+
+{% block title %}
+<title>ReRoot</title>
+{% endblock title %}
+
+{% block style %}
+<link rel="stylesheet" href="{% sass_src 'webapp/scss/landing.scss' %}" type="text/css">
+{% endblock style %}
+
+{% block body %}
+
+<div class="row justify-content-start px-5" id="title-container">
+  <div class="col-4 text">
+    <h2>AaBbCcDdEeFf</h2>
+    <h3>AaBbCcDdEeFf</h3>
+  </div>
+  <div class="col-8 image">
+    <img src="{% static 'webapp/images/carrosel.svg' %}" alt="">
+  </div>
+  <button type="button" class="btn btn-primary" id="questionnaire-button"><a
+      href="{% url 'webapp:questionnaire' %}">Questionnaire</a></button>
+</div>
+
+<div class="row justify-content-start px-5">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+  aliqua. Magna ac placerat vestibulum lectus mauris ultrices eros in. Malesuada proin libero nunc consequat interdum.
+</div>
+
+<div class="row py-2">
+  <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+    <img src="{% static 'webapp/images/opportunity.png' %}" alt="Opportunity">
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+    <img src="{% static 'webapp/images/community.png' %}" alt="Community">
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+    <img src="{% static 'webapp/images/impact.png' %}" alt="Impact">
+  </div>
+</div>
+<div class="row py-2">
+  <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+    <img src="{% static 'webapp/images/housing.png' %}" alt="Housing">
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+    <img src="{% static 'webapp/images/nature.png' %}" alt="Nature">
+  </div>
+  <div class="col-lg-4 col-md-6 col-sm-12 mt-2">
+    <img src="{% static 'webapp/images/living-quality.png' %}" alt="Living Quality">
+  </div>
+</div>
+
+<div class="row">
+  <form class="text-center" action="{% url 'webapp:landing' %}" method="POST">
+    <div class="search-group">
+      <span>
+        <input type="search" class="search-box" name="term" placeholder="What do you care about?" autocomplete="">
+      </span>
+      <span>
+        <input type="submit" class="search-button btn btn-primary" value="search">
+      </span>
+    </div>
+    {% csrf_token %}
+  </form>
+</div>
+
+<div class="row justify-content-start px-5">
+  Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna
+  aliqua. Magna ac placerat vestibulum lectus mauris ultrices eros in. Malesuada proin libero nunc consequat interdum.
+</div>
+
+<div class="scrolling-wrapper row flex-row flex-nowrap mt-4 pb-4 pt-2 mb-5">
+  {% for city in cities %}
+  <div class="col-5">
+    <div class="card card-block">
+      <img src="https://via.placeholder.com/150x100?text={{ city }}" alt="">
+      <a href="{% url 'webapp:city' city %}">{{ city }}</a>
+    </div>
+  </div>
+  {% endfor %}
+</div>
+
+{% endblock body %}
