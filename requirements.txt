@@ -4,4 +4,5 @@ django-compressor
 django-sass-processor
 django-crispy-forms
 gunicorn
+requests
 django-heroku
