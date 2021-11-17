@@ -1,38 +1,30 @@
 {% extends 'webapp/base_questionnaire.html' %}
 
-{% block body %}
+{% block question %}
 <div class="container d-flex min-vh-100">
+
   <div class="row justify-content-center align-self-center">
 
     <!-- Question Title -->
-    <div class="row question-title justify-content-center">Check there are jobs for you?
+    <div class="row justify-content-center question-title">Choose the type(s) of <span
+        style="color:#FF5C58">{{ factor }}</span> that are important to you
     </div>
-    <!-- Question Text -->
-    <div class="row question-subtitle justify-content-center my-3">Lorem ipsum dolor sit amet, consectetur adipiscing
-      elit,
-      sed
-      do eiusmod tempor
-      incididunt ut labore et dolore magna aliqua. Magna ac placerat vestibulum lectus mauris ultrices eros in.
-      Malesuada
-      proin libero nunc consequat interdum. </div>
 
-    <!-- Buttons -->
+    <!-- Question Choices -->
     <form class="text-center" action="{% url 'webapp:done' %}" method="post">
 
-      <!-- Update Submission -->
 
+      <!-- Update Submission -->
       {% csrf_token %}
-      <input class="btn btn-primary btn-questionnaire mx-3" type="submit" value="Yes">
-      <input class="btn btn-primary btn-questionnaire mx-3" type="submit" value="No">
+      <input class="btn btn-primary btn-questionnaire mx-3" type="submit" value="{{ choice }}">
     </form>
 
   </div>
 </div>
+{% endblock question %}
 
 {% block progress %}
-<div class="progress">
-  <div class="progress-bar bg-success" role="progressbar" style="width: 75%" aria-valuenow="75" aria-valuemin="0"
-    aria-valuemax="100"></div>
+<div class="progress-bar bg-success" role="progressbar" style="width: 50%" aria-valuenow="50" aria-valuemin="0"
+  aria-valuemax="100">
 </div>
 {% endblock progress %}
-{% endblock body %}

@@ -7800,8 +7800,8 @@ h1, .h1 {
 
 .question-title {
   font-family: 'Open Sans', sans-serif;
-  font-size: 64px;
-  color: #898383; }
+  font-size: 36px;
+  color: #000; }
 
 .question-subtitle {
   font-size: 20px;

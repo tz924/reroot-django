@@ -1,21 +1,21 @@
-#intro {
-  height: 100%; }
-  #intro img {
-    width: 100%;
-    height: auto; }
-  #intro .text {
-    position: absolute;
-    left: 30%;
-    top: 15%;
-    font-size: 96px;
-    color: white; }
-  #intro .btn {
-    width: fit-content;
-    position: absolute;
-    left: 50%;
-    bottom: 50%;
-    transform: translate(-50%, -50%);
-    -ms-transform: translate(-50%, -50%); }
+#intro img {
+  width: 100%;
+  height: auto; }
+
+#intro .text {
+  position: absolute;
+  left: 30%;
+  top: 15%;
+  font-size: 96px;
+  color: white; }
+
+#intro .btn {
+  width: fit-content;
+  position: absolute;
+  left: 50%;
+  bottom: 50%;
+  transform: translate(-50%, -50%);
+  -ms-transform: translate(-50%, -50%); }
 
 /* Height for devices larger than 576px */
 @media (min-width: 992px) {
@@ -31,6 +31,6 @@
   height: fit-content; }
 
 .progress {
-  height: 5vh; }
+  height: 100%; }
 
 /*# sourceMappingURL=questionnaire.css.map */

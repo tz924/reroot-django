@@ -11,7 +11,7 @@
 {% endblock style %}
 
 {% block body %}
-<div class="progress">
+<div class="progress" style="height:1vh;">
   {% block progress %}
   {% endblock progress %}
 </div>
@@ -19,9 +19,6 @@
 <nav class="navbar navbar-expand-lg navbar-light" style="background-color: #FFF7EC; height: 5vh;">
 
   <div class="container-lg">
-    <a class="navbar-brand nav-link active" aria-current="page" href="{% url 'webapp:landing' %}">
-      <img src="{% static 'webapp/images/logo.png' %}" alt="reroot logo">
-    </a>
 
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
       aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
@@ -31,23 +28,18 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link">ABOUT</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">RANDOM</a>
-        </li>
+        BACK
       </ul>
 
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
           {% if user.is_authenticated %}
           <a href="{% url 'webapp:log_out' %}" class="nav-link">
-            Log Out
+            Save Your Survey
           </a>
           {% else %}
           <a href="{% url 'webapp:log_in' %}" class="nav-link">
-            Log in
+            Register to Save Your Survey
           </a>
           {% endif %}
         </li>
@@ -56,7 +48,9 @@
     </div>
   </div>
 </nav>
-{% block question %}
-{% endblock question %}
 
+<div class="container d-flex" style="height: 94vh;">
+  {% block question %}
+  {% endblock question %}
+</div>
 {% endblock body %}
