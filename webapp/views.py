@@ -14,6 +14,7 @@ DATA_APP = "https://reroot-data-app.herokuapp.com"
 def data_api(query, payload=None):
     url = DATA_APP + query
     response = requests.get(url, params=payload)
+    print(response)
     return response.json()
 
 
@@ -137,8 +138,8 @@ def done(request):
 
 
 def results(request):
-    payload = {'input_immigrant_language_arabic': 1,
-               'input_immigrant_language_chinese': 2}
+    # TODO Sample Params
+    payload = {'opportunity_employment_yes': 1}
     scores = data_api("/scores", payload)
 
     scores_top10 = sorted(scores, key=lambda v: v['score'])[-10:]
