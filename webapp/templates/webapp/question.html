@@ -1,25 +1,30 @@
 {% extends 'webapp/base_questionnaire.html' %}
 
 {% block question %}
-<div class="container d-flex min-vh-100">
+<div class="container">
 
-  <div class="row justify-content-center align-self-center">
+  {% for factor in factors %}
+  <div class="row justify-content-center align-self-center question">
 
     <!-- Question Title -->
     <div class="row justify-content-center question-title">Choose the type(s) of <span
-        style="color:#FF5C58">{{ factor }}</span> that are important to you
+        style="color:#FF5C58">{{ factor.name }}</span> that are important to you
     </div>
 
     <!-- Question Choices -->
     <form class="text-center" action="{% url 'webapp:done' %}" method="post">
 
-
       <!-- Update Submission -->
+      {% for choice in factor.choices %}
+      <input class="btn btn-primary btn-questionnaire mx-3" type="submit" name="{{ choice }}" value="{{ choice }}">
+      {% endfor %}
+
       {% csrf_token %}
-      <input class="btn btn-primary btn-questionnaire mx-3" type="submit" value="{{ choice }}">
     </form>
 
   </div>
+  {% endfor %}
+
 </div>
 {% endblock question %}
 

@@ -15,6 +15,7 @@ urlpatterns = [
     path('questionnaire/choices', views.choices, name='choices'),
     path('questionnaire/done', views.done, name='done'),
     path('results', views.results, name='results'),
+    path('compare', views.compare, name='compare'),
     path('profile', views.profile, name='profile'),
     path('city/<str:city>', views.city, name='city'),
 ]

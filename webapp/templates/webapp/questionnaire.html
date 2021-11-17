@@ -15,27 +15,28 @@
     You'll get more options later to fine-tune your preferences.
   </div>
 
-  {% comment %} Factors {% endcomment %}
-  <div class="option-group justify-content-center text-center">
-    {% comment %} i-th row {% endcomment %}
-    {% for row in factors.rows %}
-    <div class="row pb-2">
-      <div class="col-sm-3"></div>
-      {% for factor in row %}
-      <div class="col-xs-2 col-sm-2">
-        <input type="checkbox" class="btn-check" id="toggle-{{ factor }}" autocomplete="off">
-        <label class="btn btn-toggle" for="toggle-{{ factor }}">
-          {{ factor|upper }}
-        </label>
-      </div>
-      {% endfor %}
-      <div class="col-sm-3"></div>
-    </div>
-    {% endfor %}
-  </div>
-
   <!-- Buttons -->
   <form class="text-center" action="{% url 'webapp:question' %}" method="post">
+
+    {% comment %} Factors {% endcomment %}
+    <div class="option-group justify-content-center text-center">
+      {% comment %} i-th row {% endcomment %}
+      {% for row in factors.rows %}
+      <div class="row pb-2">
+        <div class="col-sm-3"></div>
+        {% for factor in row %}
+        <div class="col-xs-2 col-sm-2">
+          <input type="checkbox" class="btn-check" name="checkbox" id="toggle-{{ factor }}" autocomplete="off"
+            value="{{ factor }}">
+          <label class="btn btn-toggle" for="toggle-{{ factor }}">
+            {{ factor|upper }}
+          </label>
+        </div>
+        {% endfor %}
+        <div class="col-sm-3"></div>
+      </div>
+      {% endfor %}
+    </div>
 
     <!-- Update Submission -->
 
