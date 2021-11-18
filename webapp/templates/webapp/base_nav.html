@@ -33,8 +33,11 @@
       </ul>
 
       <ul class="navbar-nav mb-2 mb-lg-0">
+        {% if user.is_authenticated %}
         <li class="nav-item">
-          {% if user.is_authenticated %}
+          <a href="{% url 'webapp:profile' %}" class="nav-link">Profile</a>
+        </li>
+        <li class="nav-item">
           <a href="{% url 'webapp:logout' %}" class="nav-link">
             Log Out
           </a>
