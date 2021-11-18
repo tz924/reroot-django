@@ -1,7 +1,7 @@
 from django.shortcuts import render, redirect
 from . import forms
-from .models import City
-from .forms import NewUserForm, UserLogInForm
+from .models import User
+# from .forms import NewUserForm, UserLogInForm
 from django.contrib.auth import login, logout
 from django.contrib import messages
 import requests
@@ -21,64 +21,28 @@ def data_api(query, payload=None):
 
 def log_in(request):
     if request.method == "POST":
-        form = UserLogInForm(request.POST)
-        if form.is_valid():
-            print("form valid")
-            login(request, request.user)
-            messages.success(request, "Log in successful.")
-            return redirect("webapp:profile")
-        print("form not valid")
-        messages.error(
-            request, "Unsuccessful log in. Invalid information.")
+        return redirect("webapp:profile")
 
     # if request.method is GET
-    form = UserLogInForm()
-    return render(request=request, template_name="webapp/log_in.html", context={"log_in_form": form})
+    return render(request, "webapp/log_in.html")
 
 
 def log_out(request):
     logout(request)
-    return render(request, "webapp/log_out.html", {
-    })
+    return render(request, "webapp/log_out.html")
 
 
 def register(request):
     if request.method == "POST":
-        form = NewUserForm(request.POST)
-        if form.is_valid():
-            print("form valid")
-            user = form.save()
-            login(request, user)
-            messages.success(request, "Registration successful.")
-            return redirect("webapp:log_in")
-        print("form not valid")
-        messages.error(
-            request, "Unsuccessful registration. Invalid information.")
-
-    # if request.method is GET
-    form = NewUserForm()
-    return render(request=request, template_name="webapp/register.html", context={"register_form": form})
+        return render(request, "webapp/register.html")
 
 
 def landing(request):
-    if request.method == "POST":
-        city = request.POST.get("term")
-        return redirect("webapp:city", city=city)
-
-    cities = City.objects.all()
-    return render(request, "webapp/landing.html", {
-        "cities": cities,
-    })
+    return render(request, "webapp/landing.html")
 
 
 def about(request):
     return render(request, "webapp/about.html")
-
-
-def city(request, city):
-    return render(request, "webapp/city.html",
-                  {'city': city,
-                   'mapbox_access_token': MAPBOX_ACCESS_TOKEN, })
 
 
 def questionnaire(request):
@@ -130,12 +94,6 @@ def questionnaire(request):
 #         })
 #     else:
 #         return redirect('webapp:questionnaire')
-
-
-def choices(request):
-    return render(request, "webapp/choices.html", {
-        "form": forms.NewQuestionnaireForm()
-    })
 
 
 def done(request):

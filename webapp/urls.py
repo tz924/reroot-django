@@ -11,11 +11,8 @@ urlpatterns = [
     path('register', views.register, name='register'),
     path('about', views.about, name='about'),
     path('questionnaire', views.questionnaire, name='questionnaire'),
-    # path('questionnaire/question', views.question, name='question'),
-    # path('questionnaire/choices', views.choices, name='choices'),
     path('done', views.done, name='done'),
     path('results', views.results, name='results'),
     path('compare', views.compare, name='compare'),
     path('profile', views.profile, name='profile'),
-    path('city/<str:city>', views.city, name='city'),
 ]
