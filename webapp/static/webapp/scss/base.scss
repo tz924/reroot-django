@@ -19,22 +19,20 @@
   font-family: roboto, arial, helvetica;
 }
 
-//   button-outline-variant(
-//   $color,
-//   $color-hover: color-contrast($color),
+//   button-outline-variant($color,$color-hover: color-contrast($color),
 //   $active-background: $color,
 //   $active-border: $color,
 //   $active-color: color-contrast($active-background))
 .btn-toggle {
-  @extend .rounded-pill;
-  @include button-variant($tertiary-l, $tertiary-h, $title,
-    $tertiary-m, $tertiary-h, $title,
-    $primary-m, $primary-m, $white);
+  border-radius: 5px;
+  @include button-variant(transparent, $black, $black,
+    transparent, $primary-h, $primary-h,
+    $primary-h, $primary-h, $white);
+  font-family: 'Inter', sans-serif;
 }
 
 // Fonts
-@import url('https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&family=Open+Sans&family=Playfair+Display:wght@400;700&family=Roboto&display=swap');
-
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Nunito+Sans:wght@700&family=Open+Sans&family=Playfair+Display:wght@400;700&family=Roboto&display=swap');
 
 h1 {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;

@@ -5,6 +5,7 @@ from .forms import NewUserForm, UserLogInForm
 from django.contrib.auth import login, logout
 from django.contrib import messages
 import requests
+import time
 
 MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiemhqMDkyNCIsImEiOiJja3ZnangxdXljMXBlMnBtYTF0c29oN2N3In0.HsgAF-xISYEHuqdLlpJL2A'
 
@@ -82,47 +83,53 @@ def city(request, city):
 
 def questionnaire(request):
     factors_raw = data_api("/factors")
-    factors = {"rows": []}
-    per_row = 3
+    # print(factors_raw)
+    # factors = {"rows": []}
+    # per_row = 3
 
-    for i, key in enumerate(factors_raw.keys()):
-        row_i, m = divmod(i, per_row)
-        if m == 0:
-            factors["rows"].append([key])
-        else:
-            factors["rows"][row_i].append(key)
+    # for i, key in enumerate(factors_raw.keys()):
+    #     row_i, m = divmod(i, per_row)
+    #     if m == 0:
+    #         factors["rows"].append([key])
+    #     else:
+    #         factors["rows"][row_i].append(key)
+
+    factors = []
+    for k, v in factors_raw.items():
+        factors.append({"category": k, "sub_categories": list(v.keys())})
+    print(factors)
 
     return render(request, "webapp/questionnaire.html", {
-        "factors": factors,
+        "factors": factors[1:],
     })
 
 
-def question(request):
-    if request.method == "POST":
-        factor_names = request.POST.getlist("checkbox")
+# def question(request):
+#     if request.method == "POST":
+#         factor_names = request.POST.getlist("checkbox")
 
-        # store factors for later use
-        if request.user.is_authenticated:
-            # TODO store in database
-            pass
-        else:
-            request.session["factors"] = factor_names
+#         # store factors for later use
+#         if request.user.is_authenticated:
+#             # TODO store in database
+#             pass
+#         else:
+#             request.session["factors"] = factor_names
 
-        factors_raw = data_api("/factors")
+#         factors_raw = data_api("/factors")
 
-        factors = []
-        for factor in factor_names:
-            temp = {}
-            temp["name"] = factor
-            temp["choices"] = list(factors_raw[factor].keys())
-            factors.append(temp)
+#         factors = []
+#         for factor in factor_names:
+#             temp = {}
+#             temp["name"] = factor
+#             temp["choices"] = list(factors_raw[factor].keys())
+#             factors.append(temp)
 
-        return render(request, "webapp/question.html", {
-            "factors": factors,
-            "choices": choices
-        })
-    else:
-        return redirect('webapp:questionnaire')
+#         return render(request, "webapp/question.html", {
+#             "factors": factors,
+#             "choices": choices
+#         })
+#     else:
+#         return redirect('webapp:questionnaire')
 
 
 def choices(request):
@@ -132,9 +139,18 @@ def choices(request):
 
 
 def done(request):
-    return render(request, "webapp/done.html", {
-        "form": forms.NewQuestionnaireForm()
-    })
+    if request.method == "POST":
+        factor_names = request.POST.getlist("checkbox")
+
+        # store factors for later use
+        if request.user.is_authenticated:
+            # TODO store in database
+            pass
+        else:
+            request.session["factors"] = factor_names
+        return render(request, "webapp/done.html")
+    else:
+        return redirect('webapp:questionnaire')
 
 
 def results(request):

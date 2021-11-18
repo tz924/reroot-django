@@ -4,7 +4,7 @@
  * Copyright 2011-2021 Twitter, Inc.
  * Licensed under MIT (https://github.com/twbs/bootstrap/blob/main/LICENSE)
  */
-@import url("https://fonts.googleapis.com/css2?family=Nunito+Sans:wght@700&family=Open+Sans&family=Playfair+Display:wght@400;700&family=Roboto&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Inter:wght@500&family=Nunito+Sans:wght@700&family=Open+Sans&family=Playfair+Display:wght@400;700&family=Roboto&display=swap");
 :root {
   --bs-blue: #0d6efd;
   --bs-indigo: #6610f2;
@@ -5987,7 +5987,7 @@ textarea.form-control-lg {
 .rounded-circle {
   border-radius: 50% !important; }
 
-.rounded-pill, .btn-toggle, .btn-primary {
+.rounded-pill, .btn-primary {
   border-radius: 50rem !important; }
 
 .rounded-top {
@@ -7770,28 +7770,30 @@ textarea.form-control-lg {
     border-color: #FF5C58; }
 
 .btn-toggle {
-  color: #898383;
-  background-color: #D8D8D8;
-  border-color: #000000; }
+  border-radius: 5px;
+  color: #000;
+  background-color: transparent;
+  border-color: #000;
+  font-family: 'Inter', sans-serif; }
   .btn-toggle:hover {
-    color: #898383;
-    background-color: #C4C4C4;
-    border-color: #000000; }
+    color: #FF5C58;
+    background-color: transparent;
+    border-color: #FF5C58; }
   .btn-check:focus + .btn-toggle, .btn-toggle:focus {
-    color: #898383;
-    background-color: #C4C4C4;
-    border-color: #000000;
-    box-shadow: 0 0 0 0.25rem rgba(21, 20, 20, 0.5); }
+    color: #FF5C58;
+    background-color: transparent;
+    border-color: #FF5C58;
+    box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.5); }
   .btn-check:checked + .btn-toggle, .btn-check:active + .btn-toggle, .btn-toggle:active, .btn-toggle.active, .show > .btn-toggle.dropdown-toggle {
     color: #fff;
-    background-color: #FFA19E;
-    border-color: #FFA19E; }
+    background-color: #FF5C58;
+    border-color: #FF5C58; }
     .btn-check:checked + .btn-toggle:focus, .btn-check:active + .btn-toggle:focus, .btn-toggle:active:focus, .btn-toggle.active:focus, .show > .btn-toggle.dropdown-toggle:focus {
-      box-shadow: 0 0 0 0.25rem rgba(21, 20, 20, 0.5); }
+      box-shadow: 0 0 0 0.25rem rgba(0, 0, 0, 0.5); }
   .btn-toggle:disabled, .btn-toggle.disabled {
-    color: #000;
-    background-color: #D8D8D8;
-    border-color: #000000; }
+    color: #fff;
+    background-color: transparent;
+    border-color: #000; }
 
 h1, .h1 {
   font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
