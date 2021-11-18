@@ -34,11 +34,11 @@
       <ul class="navbar-nav mb-2 mb-lg-0">
         <li class="nav-item">
           {% if user.is_authenticated %}
-          <a href="{% url 'webapp:log_out' %}" class="nav-link">
+          <a href="{% url 'webapp:logout' %}" class="nav-link">
             Save Your Survey
           </a>
           {% else %}
-          <a href="{% url 'webapp:log_in' %}" class="nav-link">
+          <a href="{% url 'webapp:login' %}" class="nav-link">
             Register to Save Your Survey
           </a>
           {% endif %}

@@ -6,8 +6,8 @@ app_name = 'webapp'
 
 urlpatterns = [
     path('', views.landing, name='landing'),
-    path('log-in', views.log_in, name='log_in'),
-    path('log-out', views.log_out, name='log_out'),
+    path('login', views.login_view, name='login'),
+    path('logout', views.logout_view, name='logout'),
     path('register', views.register, name='register'),
     path('about', views.about, name='about'),
     path('questionnaire', views.questionnaire, name='questionnaire'),

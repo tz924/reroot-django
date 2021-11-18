@@ -1,11 +1,10 @@
-from django.shortcuts import render, redirect
-from . import forms
-from .models import User
-# from .forms import NewUserForm, UserLogInForm
-from django.contrib.auth import login, logout
+from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.decorators import login_required
 from django.contrib import messages
+from django.db import IntegrityError
+from django.shortcuts import render, redirect
+from .models import User
 import requests
-import time
 
 MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiemhqMDkyNCIsImEiOiJja3ZnangxdXljMXBlMnBtYTF0c29oN2N3In0.HsgAF-xISYEHuqdLlpJL2A'
 
@@ -19,21 +18,55 @@ def data_api(query, payload=None):
     return response.json()
 
 
-def log_in(request):
+def login_view(request):
     if request.method == "POST":
-        return redirect("webapp:profile")
 
-    # if request.method is GET
-    return render(request, "webapp/log_in.html")
+        # Attempt to sign user in
+        username = request.POST.get('username')
+        password = request.POST.get('password')
+        user = authenticate(request, username=username, password=password)
+
+        # Check if authentication successful
+        if user is not None:
+            login(request, user)
+            return redirect("webapp:profile")
+        else:
+            return render(request, "webapp/login.html", {
+                "message": "Invalid username and/or password."
+            })
+    else:
+        return render(request, "webapp/login.html")
 
 
-def log_out(request):
+def logout_view(request):
     logout(request)
-    return render(request, "webapp/log_out.html")
+    return render(request, "webapp/landing.html")
 
 
 def register(request):
     if request.method == "POST":
+        username = request.POST.get('username')
+        email = request.POST.get('email')
+
+        # Ensure password matches confirmation
+        password = request.POST.get('password')
+        confirmation = request.POST.get('confirmation')
+        if password != confirmation:
+            return render(request, "webapp/register.html", {
+                "message": "Passwords must match."
+            })
+
+        # Attempt to create new user
+        try:
+            user = User.objects.create_user(username, email, password)
+            user.save()
+        except IntegrityError:
+            return render(request, "webapp/register.html", {
+                "message": "Username already taken."
+            })
+        login(request, user)
+        return redirect("webapp:profile")
+    else:
         return render(request, "webapp/register.html")
 
 
@@ -68,32 +101,9 @@ def questionnaire(request):
     })
 
 
-# def question(request):
-#     if request.method == "POST":
-#         factor_names = request.POST.getlist("checkbox")
-
-#         # store factors for later use
-#         if request.user.is_authenticated:
-#             # TODO store in database
-#             pass
-#         else:
-#             request.session["factors"] = factor_names
-
-#         factors_raw = data_api("/factors")
-
-#         factors = []
-#         for factor in factor_names:
-#             temp = {}
-#             temp["name"] = factor
-#             temp["choices"] = list(factors_raw[factor].keys())
-#             factors.append(temp)
-
-#         return render(request, "webapp/question.html", {
-#             "factors": factors,
-#             "choices": choices
-#         })
-#     else:
-#         return redirect('webapp:questionnaire')
+@login_required(login_url="webapp:login")
+def profile(request):
+    return render(request, "webapp/profile.html")
 
 
 def done(request):
@@ -186,7 +196,3 @@ def compare(request):
     #         if request.POST.get('minus') and request.session['display'] > 0:
     #             request.session['display'] -= 1
     #     display = request.session['display']
-
-
-def profile(request):
-    return render(request, "webapp/profile.html")
