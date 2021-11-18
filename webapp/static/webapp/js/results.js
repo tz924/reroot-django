@@ -24,12 +24,21 @@ const MAX_CHECKED = 3;
 document.addEventListener('DOMContentLoaded', () => {
   const county_list = document.getElementById('county_list');
   let checkboxes = county_list.querySelectorAll("input[type=checkbox]");
+  checkboxes.forEach((checkbox) => {
+    checkbox.checked = false;
+  });
+
+  // compare button disabled by default
+  let compare_button = document.getElementById('compare_button');
+  compare_button.disabled = true;
 
   checkboxes.forEach((checkbox) => {
     checkbox.addEventListener('change', () => {
       let checked = county_list.querySelectorAll('input[type="checkbox"]:checked');
 
       let unchecked = [];
+
+      // Ensure maximum checked doesn't exceed threshold
       checkboxes.forEach(c => {
         if (!c.checked) unchecked.push(c);
       });
@@ -39,6 +48,8 @@ document.addEventListener('DOMContentLoaded', () => {
       } else {
         unchecked.forEach(c => c.disabled = false);
       }
+
+      compare_button.disabled = checked.length < 2;
     });
   });
 

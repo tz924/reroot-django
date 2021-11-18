@@ -1,4 +1,5 @@
 {% extends 'webapp/base_nav.html' %}
+{% load static %}
 
 {% block title %}
 <title>Compare</title>
@@ -9,57 +10,27 @@
   Counties
 </div>
 <div class="row">
-{% for county in counties %}
+  {% for county in counties %}
   {{ county.county_name }}
-{% endfor %}
+  {% endfor %}
+</div>
+
+{% comment %} Chart.js {% endcomment %}
+{{ counties|json_script:"counties" }}
+
+<div>
+  <canvas id="myChart"></canvas>
+</div>
+
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+<script src="{% static 'webapp/js/compare.js' %}"></script>
+
+<div class="col-lg-12 button-group">
+  <button id="environment_air">Add environment_air</button>
+  <button id="remove_last">Remove last factor</button>
 </div>
 
 
-<div class="col-lg-12">
-  <div class="table-responsve">
-    <table class="table table-striped table-hover">
-      <thead class="thead-inverse">
-        <tr>
-          <th class="w-25"></th>
-          {% for city in cities %}
-          <th class="">{{ city.name }}</th>
-          {% endfor %}
-        </tr>
-      </thead>
-      <tbody>
-        <tr>
-          <td class="w-25 option">State</td>
-          {% for city in cities %}
-          <td class="">{{ city.state }}</td>
-          {% endfor %}
-        </tr>
-        <tr>
-          <td class="option">Population</td>
-          {% for city in cities %}
-          <td class="">{{ city.population }}</td>
-          {% endfor %}
-        </tr>
-      </tbody>
-      <tfoot class="thead-inverse">
-        <tr>
-          <th class="w-25"></th>
-          {% for _ in cities %}
-          <th class=""><button class="btn btn-primary">Like</button></th>
-          {% endfor %}
-        </tr>
-      </tfoot>
-    </table>
-  </div>
 
-  <div class="col-lg-12">
-    <form action="{% url 'webapp:results' %}" method="POST">
-      <input class="btn btn-primary" type="submit" name="plus" value="+">
-      {% csrf_token %}
-    </form>
-    {{ display }}
-    <form action="{% url 'webapp:results' %}" method="POST">
-      <input class="btn btn-primary" type="submit" name="minus" value="-">
-      {% csrf_token %}
-    </form>
-  </div>
-  {% endblock body %}
+
+{% endblock body %}
