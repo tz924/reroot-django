@@ -6,12 +6,10 @@ const map = new mapboxgl.Map({
   zoom: 3,
 });
 
-console.log(counties);
-
 // Create a new marker.
 counties.forEach(county => {
   new mapboxgl.Marker()
-    .setLngLat(county.lnglat)
+    .setLngLat(county.longlat)
     .setPopup(new mapboxgl.Popup({
         offset: 25
       }) // add popups

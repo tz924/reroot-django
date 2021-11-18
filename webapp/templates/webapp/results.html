@@ -7,9 +7,6 @@
 
 {% block body %}
 <div class="row">
-  Results
-</div>
-<div class="row">
   <div class="col-6">
     <div id='map' style='width: 100%; height: 50vh;'></div>
     <script>
@@ -37,7 +34,7 @@
           <div class="row">
             <div class="col-10">
               <div class="progress">
-                {{ county.score }}
+                {% comment %} {{ county.score }} {% endcomment %}
                 <div class="progress-bar" role="progressbar"
                   style="width: {{ county.score }}%; background-color: #FFA19E" aria-valuenow="{{ county.score }}"
                   aria-valuemin="0" aria-valuemax="100"></div>
@@ -54,7 +51,7 @@
             aria-labelledby="heading{{ county.code }}" data-bs-parent="#county_list">
             <div class="accordion-body">
               <ul>
-                {% for k, v in county.detail.items %}
+                {% for k, v in county.county_details.items %}
                 <li>{{ k }}: {{ v }}</li>
                 {% endfor %}
               </ul>

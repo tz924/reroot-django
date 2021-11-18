@@ -1,5 +1,6 @@
 // questionnaire.scss
 // Option A: Include all of Bootstrap
+@import '../scss/variables';
 
 // Include any default variable overrides here (though functions won't be available)
 
@@ -47,4 +48,17 @@
 
 .progress {
   height: 100%;
+}
+
+.question-title {
+  font-family: 'Playfair Display', serif;
+  font-size: 36px;
+  color: $title;
+}
+
+.question-subtitle {
+  font-size: 20px;
+  color: black;
+  font-family: 'Nunito Sans', sans-serif;
+  font-weight: bold;
 }

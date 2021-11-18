@@ -9,6 +9,8 @@ import requests
 MAPBOX_ACCESS_TOKEN = 'pk.eyJ1IjoiemhqMDkyNCIsImEiOiJja3ZnangxdXljMXBlMnBtYTF0c29oN2N3In0.HsgAF-xISYEHuqdLlpJL2A'
 
 DATA_APP = "https://reroot-data-app.herokuapp.com"
+IMPORTANT = 1
+VERY_IMPORTANT = 2
 
 
 def data_api(query, payload=None):
@@ -80,24 +82,14 @@ def about(request):
 
 def questionnaire(request):
     factors_raw = data_api("/factors")
-    # print(factors_raw)
-    # factors = {"rows": []}
-    # per_row = 3
-
-    # for i, key in enumerate(factors_raw.keys()):
-    #     row_i, m = divmod(i, per_row)
-    #     if m == 0:
-    #         factors["rows"].append([key])
-    #     else:
-    #         factors["rows"][row_i].append(key)
-
+    print(factors_raw)
     factors = []
     for k, v in factors_raw.items():
         factors.append({"category": k, "sub_categories": list(v.keys())})
     print(factors)
 
     return render(request, "webapp/questionnaire.html", {
-        "factors": factors[1:],
+        "factors": factors,
     })
 
 
@@ -113,51 +105,55 @@ def done(request):
         # store factors for later use
         if request.user.is_authenticated:
             # TODO store in database
-            pass
+            request.session["factors_selected"] = factor_names
         else:
-            request.session["factors"] = factor_names
+            request.session["factors_selected"] = factor_names
         return render(request, "webapp/done.html")
     else:
         return redirect('webapp:questionnaire')
 
 
+def get_scores_payload(factors_selected):
+    '''
+    helper functions
+    '''
+    factors_raw = data_api("/factors")
+    print(factors_raw.values())
+    print(factors_selected)
+    return {f[k]: 1 for f in factors_raw.values()
+            for k in factors_selected if k in f}
+
+
 def results(request):
-    # TODO Sample Params
-    payload = {'opportunity_employment_yes': 1}
-    scores = data_api("/scores", payload)
 
-    scores_top10 = sorted(scores, key=lambda v: v['score'])[-10:]
-    county_codes = [score['county_code'] for score in scores_top10]
+    # factors_selected = request.session.get("factors_selected")
 
-    payload = {'counties': ','.join(str(c) for c in county_codes)}
+    # issues filling out the survey, redo
+    # if not factors_selected:
+    # return redirect("webapp:questionnaire")
+
+    # payload = get_scores_payload(factors_selected)
+    SAMPLE_PAYLOAD = {"diversity_cultural": VERY_IMPORTANT,
+                      "service_internet": VERY_IMPORTANT,
+                      "environment_air": VERY_IMPORTANT}
+    scores = data_api("/scores", SAMPLE_PAYLOAD)
+
+    codes_top10 = sorted(scores, key=lambda c: scores[c]['score'])[-10:]
+    print(codes_top10)
+    payload = {'counties': ','.join(str(c) for c in codes_top10)}
     counties = data_api("/counties", payload)
 
-    for k, v in counties.items():
-        v["code"] = k
+    # counties = list(counties.values())
+
+    for c in counties:
+        for code in codes_top10:
+            if c == code:
+                counties[c]['code'] = code
+                counties[c]['score'] = scores[code]['score'] * 10
+                counties[c]['lnglat'] = counties[c]['coordinates'][::-1]
+
     counties = list(counties.values())
-    print(len(counties))
-    for c in counties:
-        print(c)
 
-    for c in counties:
-        c["longlat"] = [c["county_long"], c["county_lat"]]
-        if not c.get("detail"):
-            c["detail"] = {}
-        for k, v in c.items():
-            if k[0] != 'c' and k not in ["longlat", "detail"]:
-                c["detail"][k] = v
-        for score in scores_top10:
-            if c["code"] == str(score["county_code"]):
-                c["score"] = round(score["score"] * 10, 2)
-
-    # if request.method == "POST":
-    # form = forms.NewQuestionnaireForm(request.POST)
-    # if form.is_valid():
-    #     print("valid")
-    #     # update
-    # else:
-    #     # Not possible when all fields required
-    #     return render(request, "webapp/results.html")
     return render(request, "webapp/results.html", {
         'counties': counties,
         'mapbox_access_token': MAPBOX_ACCESS_TOKEN})
@@ -171,7 +167,14 @@ def compare(request):
         counties_raw = data_api(
             "/counties", {'counties': ','.join(str(c) for c in county_codes)})
         print(counties_raw)
-        counties = [v for k, v in counties_raw.items()]
+
+        counties = []
+        for code in counties_raw:
+            county = {}
+            county['code'] = code
+            county['name'] = counties_raw[code]['county_name']
+            county['rank_details'] = counties_raw[code]['rank_details']
+            counties.append(county)
 
         return render(request, "webapp/compare.html", {
             "counties": counties

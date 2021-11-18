@@ -7800,17 +7800,6 @@ h1, .h1 {
   font-size: 90px;
   text-align: center; }
 
-.question-title {
-  font-family: 'Open Sans', sans-serif;
-  font-size: 36px;
-  color: #000; }
-
-.question-subtitle {
-  font-size: 20px;
-  color: #000;
-  font-family: 'Nunito Sans', sans-serif;
-  font-weight: bold; }
-
 a,
 a:hover,
 a:focus,

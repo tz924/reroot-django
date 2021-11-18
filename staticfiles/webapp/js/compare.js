@@ -3,11 +3,11 @@ const counties = JSON.parse(document.getElementById('counties').textContent);
 console.log(counties);
 let county_names = []
 counties.forEach((e) => {
-  county_names.push(e.name);
+  county_names.push(e.county_name);
 });
 
 // TODO Sample metrics
-let sample_labels = ['diversity_cultural_rank', 'diversity_economic_rank', 'diversity_lgbt_rank'];
+let sample_labels = ['diversity_cultural', 'diversity_economic', 'diversity_lgbt'];
 let colors = ['red', 'blue', 'green'];
 
 console.log(county_names);
@@ -17,11 +17,11 @@ let datasets = [];
 for (const [index, county] of counties.entries()) {
   let data = [];
   sample_labels.forEach(label => {
-    data.push(county.rank_details[label]);
+    data.push(county[label]);
   });
 
   let dataset = {
-    label: county.name,
+    label: county.county_name,
     backgroundColor: colors[index],
     borderColor: colors[index],
     data: data,
@@ -71,11 +71,11 @@ document.addEventListener('DOMContentLoaded', () => {
 
     const data = myChart.data;
     if (data.datasets.length > 0) {
-      sample_labels.push('environment_air_rank');
+      sample_labels.push('environment_air');
       data.labels = sample_labels;
 
       for (let index = 0; index < data.datasets.length; ++index) {
-        data.datasets[index].data.push(counties[index].rank_details['environment_air_rank']);
+        data.datasets[index].data.push(counties[index]['environment_air']);
       }
 
       myChart.update();
