@@ -1,4 +1,5 @@
 {% extends 'webapp/base_questionnaire.html' %}
+{% load static %}
 
 {% block question %}
 <div class="row justify-content-center">
@@ -41,10 +42,11 @@
     <!-- Update Submission -->
 
     {% csrf_token %}
-    <input class="btn btn-primary btn-questionnaire mx-3" type="submit" value="Next">
+    <input class="btn btn-primary btn-questionnaire mx-3" type="submit" value="Next" id="next_button">
   </form>
 
 </div>
+<script src="{% static 'webapp/js/questionnaire.js' %}"></script>
 {% endblock question %}
 
 {% block progress %}
