@@ -95,7 +95,8 @@ def questionnaire(request):
 
 @login_required(login_url="webapp:login")
 def profile(request):
-    return render(request, "webapp/profile.html")
+    user = request.user
+    return render(request, "webapp/profile.html", {"user": user})
 
 
 def done(request):

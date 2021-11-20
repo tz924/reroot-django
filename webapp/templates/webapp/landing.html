@@ -7,7 +7,7 @@
 {% endblock title %}
 
 {% block style %}
-<link rel="stylesheet" href="{% sass_src 'webapp/scss/landing.scss' %}" type="text/css">
+<link href="{% sass_src 'webapp/scss/landing.scss' %}?x=1" type="text/css" rel="stylesheet">
 {% endblock style %}
 
 {% block body %}
@@ -25,6 +25,95 @@
   </div>
 
   <img src="{%static 'webapp/images/move.png' %}" alt="move">
+</div>
+
+<div class="row d-flex" id="about-container">
+
+  {% comment %} About Page {% endcomment %}
+  <div class="row px-4" id="about-intro">
+    <div class="row">
+      <div class="col-8">
+        <div class="row title justify-content-center">
+          Moving is a hard decision
+        </div>
+        <div class="row content justify-content-center">
+          As social, economic, and climate landscapes change, individuals and families might want to move to where they
+          can
+          find a community they know will be safe, welcoming, and prosperous.
+
+          Yet, moving is a huge risk that not many can afford to take, and not everyone is aware of what opportunities
+          may
+          even exist.
+        </div>
+      </div>
+    </div>
+
+    <div class="row icon">
+      <div class="col-7"></div>
+      <div class="col-5">
+        <img src="{%static 'webapp/images/about-icon-1.png' %}" alt="about icon 1">
+        <img src="{%static 'webapp/images/about-icon-2.png' %}" alt="about icon 1">
+        <img src="{%static 'webapp/images/about-icon-3.png' %}" alt="about icon 1">
+      </div>
+    </div>
+
+    <div class="row">
+      <div class="col-8">
+        <div class="row title justify-content-center">
+          Where we come in
+        </div>
+        <div class="row content justify-content-center">
+          We help people make more informed decisions on where is the best place to go, outside of existing networks and
+          word-of-mouth.
+        </div>
+      </div>
+    </div>
+
+    <div class="row goal text-center justify-content-center">
+      <img src="{%static 'webapp/images/goal.png' %}" alt="goal">
+    </div>
+  </div>
+
+  <div class="row" id="about-top">
+    <div class="banner">
+      <img src="{%static 'webapp/images/banner-logo-1.png' %}" alt="logo 1">
+      <img src="{%static 'webapp/images/banner-logo-2.png' %}" alt="logo 2">
+      <img src="{%static 'webapp/images/banner-logo-3.png' %}" alt="logo 3">
+    </div>
+
+    <div class="row">
+      <div class="title">
+        Data-driven Solution
+      </div>
+      <div class="subtitle">
+        Back by the data from U.S. Census
+      </div>
+    </div>
+
+    <div class="row">
+      <img src="{%static 'webapp/images/intro.png' %}" alt="intro">
+    </div>
+
+    <div class="row">
+      <div class="col-4">
+        <img src="{%static 'webapp/images/step1.png' %}" alt="step1">
+      </div>
+      <div class="col-4">
+        <img src="{%static 'webapp/images/step2.png' %}" alt="step2">
+      </div>
+      <div class="col-4">
+        <img src="{%static 'webapp/images/step3.png' %}" alt="step3">
+      </div>
+    </div>
+
+    <div class="row action">
+      <button type="button" class="btn btn-primary px-5 mx-5">
+        <a href="{% url 'webapp:questionnaire' %}">Start Questionnaire</a>
+      </button>
+      {% comment %} <img src="{%static 'webapp/images/left-arrow.png' %}" alt="left arrow"> {% endcomment %}
+    </div>
+
+  </div>
 </div>
 
 {% endblock body %}

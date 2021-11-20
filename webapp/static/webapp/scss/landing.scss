@@ -52,5 +52,66 @@
     transform: translate(-50%, -50%);
     -ms-transform: translate(-50%, -50%);
   }
+}
 
+
+#about-container {
+
+  .title {
+    font-family: 'Playfair Display', serif;
+    font-weight: bold;
+    font-size: 48px;
+    color: $title-red;
+  }
+
+  .subtitle {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: $title;
+  }
+
+  .content {
+    font-family: 'Playfair Display', serif;
+    font-size: 24px;
+    color: black;
+  }
+
+  #about-intro {
+    .content {
+      background-color: $theme-dark;
+      border-radius: 15px;
+    }
+
+    .icon {
+      img {
+        position: relative;
+        min-width: 75px;
+        width: 5vw;
+        height: auto;
+      }
+    }
+
+    .goal {
+      img {
+        width: 55vw;
+      }
+    }
+
+  }
+
+  #about-top {
+
+    .banner {
+      background-color: $theme-dark;
+    }
+
+    .action {
+      button {
+        width: 10vw;
+      }
+      img {
+        width: 1px;
+      }
+    }
+  }
 }

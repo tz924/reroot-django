@@ -6,6 +6,7 @@
 {% endblock title %}
 
 {% block style %}
+<link type="text/css" href="{% sass_src 'webapp/scss/nav.scss' %}" rel="stylesheet">
 {% endblock style %}
 
 {% block top_nav %}
@@ -24,12 +25,6 @@
     <div class="collapse navbar-collapse" id="navbarSupportedContent">
 
       <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-        <li class="nav-item">
-          <a class="nav-link" href="{% url 'webapp:about' %}">ABOUT</a>
-        </li>
-        <li class="nav-item">
-          <a class="nav-link">RANDOM</a>
-        </li>
       </ul>
 
       <ul class="navbar-nav mb-2 mb-lg-0">
@@ -59,7 +54,48 @@
 
 {% block bottom_nav %}
 <nav class="navbar navbar-expand-lg navbar-light justify-content-center"
-  style="background-color: #FFF7EC; height: 5vh;">
-  Copyright © ReRoot. All rights reserved.
+  style="background-color: #ECCDA0; height: 100%%;">
+  <div class="col-1">
+  </div>
+  <div class="col-3">
+    <div class="title">Our team</div>
+    <div class="content">
+      <ul>
+        <li>Pranay Varada</li>
+        <li>Yujie Wang</li>
+        <li>Mier Chen</li>
+        <li>Lily Huang</li>
+        <li>Karma Tarap</li>
+        <li>Thomas Zhang</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="title">Advisors</div>
+    <div class="content">
+      <ul>
+        <li>Jack Cushman</li>
+        <li>Sabelo Mhlambi</li>
+        <li>Lins Derry</li>
+        <li>Lucas Chu</li>
+        <li>Matthew Battles</li>
+        <li>Alice Cai</li>
+      </ul>
+    </div>
+  </div>
+  <div class="col-3">
+    <div class="row">
+      <div class="title">Data</div>
+      <div class="content">
+        <a href="http://">data source</a>
+      </div>
+    </div>
+    <div class="row">
+      <div class="title">Contact Us</div>
+      <div class="content">
+        <a href="http://">Email address</a>
+      </div>
+    </div>
+  </div>
 </nav>
 {% endblock bottom_nav %}
